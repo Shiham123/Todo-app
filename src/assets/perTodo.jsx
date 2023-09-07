@@ -1,4 +1,4 @@
-import style from './perTodo.module.css';
+import style from './css/perTodo.module.css';
 import PropTypes from 'prop-types';
 import { FaTrash } from 'react-icons/fa';
 

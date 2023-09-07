@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import style from './newTodo.module.css';
+import style from './css/newTodo.module.css';
 import PropTypes from 'prop-types';
 
 function NewTodo(props) {

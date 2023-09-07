@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import Todo from './todo';
-import style from './home.module.css';
+import style from './css/home.module.css';
 import NewTodo from './newTodo';
 
 function Home() {

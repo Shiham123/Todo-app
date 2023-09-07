@@ -1,5 +1,5 @@
 import PerTodo from './perTodo';
-import style from './todo.module.css';
+import style from './css/todo.module.css';
 import PropTypes from 'prop-types';
 
 function Todo(props) {
