@@ -1,20 +1,13 @@
-import PerTodo from './perTodo';
 import style from './css/todo.module.css';
-import PropTypes from 'prop-types';
+import PerTodo from './perTodo';
 
-function Todo(props) {
-  const { todo, removeTodo } = props;
+const Todo = (props) => {
+  const { todo, removeItem } = props;
 
   const showTodo = todo.map((item) => (
-    <PerTodo key={item.id} todo={item} removeTodo={removeTodo} />
+    <PerTodo key={item.id} todo={item} removeItem={removeItem} />
   ));
-
   return <section className={style.todo}>{showTodo}</section>;
-}
-
-Todo.propTypes = {
-  todo: PropTypes.arrayOf(PropTypes.object).isRequired,
-  removeTodo: PropTypes.func.isRequired,
 };
 
 export default Todo;

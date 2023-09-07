@@ -1,45 +1,54 @@
 import { useState } from 'react';
 import style from './css/newTodo.module.css';
-import PropTypes from 'prop-types';
 
 function NewTodo(props) {
-  const [todo, setTodo] = useState({ title: '', desc: '' });
-  const { title, desc } = todo;
+  const [todo, setTodo] = useState({ title: '', desc: '', number: 0 });
+  const { title, desc, number } = todo;
   const { newTodo } = props;
 
   const handleInput = (event) => {
-    const name = event.target.name;
+    const { name, value } = event.target;
 
     setTodo((oldTodo) => {
-      return { ...oldTodo, [name]: event.target.value };
+      return { ...oldTodo, [name]: value };
     });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (!title || !desc || !number) {
+      alert('please fill all the box');
+    }
     newTodo(todo);
-    setTodo({ title: '', desc: '' });
+    setTodo({ title: '', desc: '', number: 0 });
   };
 
   return (
-    <form className={style.form} onSubmit={handleSubmit}>
+    <form action="" className={style.form} onSubmit={handleSubmit}>
       <div className={style['form-field']}>
-        <label htmlFor="title">Title : </label>
+        <label htmlFor="Title">Title : </label>
         <input type="text" name="title" value={title} onChange={handleInput} />
       </div>
 
       <div className={style['form-field']}>
-        <label htmlFor="desc">desc : </label>
+        <label htmlFor="Desc">Desc : </label>
         <input type="text" name="desc" value={desc} onChange={handleInput} />
+      </div>
+
+      <div className={style['form-field']}>
+        <label htmlFor="Number">Number : </label>
+        <input
+          type="number"
+          name="number"
+          value={number}
+          onChange={handleInput}
+        />
       </div>
 
       <button type="submit">Add Todo</button>
     </form>
   );
 }
-
-NewTodo.propTypes = {
-  newTodo: PropTypes.func.isRequired,
-};
 
 export default NewTodo;

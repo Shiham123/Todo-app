@@ -1,30 +1,32 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import Todo from './todo';
-import style from './css/home.module.css';
 import NewTodo from './newTodo';
+import style from './css/home.module.css';
+import Todo from './todo';
 
 function Home() {
   const [todo, setTodo] = useState([]);
 
-  const addNewTodo = (todoContent) => {
-    setTodo((oldTodo) => {
-      return [...oldTodo, { id: uuidv4(), todoContent }];
+  const addTodo = (todoContent) => {
+    setTodo((prevTodo) => {
+      const newTodo = { id: uuidv4(), todoContent };
+      return [...prevTodo, newTodo];
     });
   };
 
   const removeTodo = (id) => {
-    setTodo((oldTodo) => {
-      const filteredTodo = oldTodo.filter((todo) => todo.id !== id);
+    setTodo((prevTodo) => {
+      const filteredTodo = prevTodo.filter((todo) => todo.id !== id);
       return filteredTodo;
     });
   };
+
   return (
     <div className={style.container}>
-      <h1>Todo App</h1>
-      <NewTodo newTodo={addNewTodo} />
-      <Todo todo={todo} removeTodo={removeTodo} />
+      <h1>Todo app</h1>
+      <NewTodo newTodo={addTodo} />
+      <Todo todo={todo} removeItem={removeTodo} />
     </div>
   );
 }

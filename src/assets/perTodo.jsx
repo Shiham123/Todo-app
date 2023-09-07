@@ -1,16 +1,16 @@
 import style from './css/perTodo.module.css';
-import PropTypes from 'prop-types';
 import { FaTrash } from 'react-icons/fa';
 
-function PerTodo(props) {
+const PerTodo = (props) => {
   const {
     id,
-    todoContent: { title, desc },
+    todoContent: { title, desc, number },
   } = props.todo;
-  const { removeTodo } = props;
+
+  const { removeItem } = props;
 
   const handleClick = () => {
-    removeTodo(id);
+    removeItem(id);
   };
 
   return (
@@ -18,6 +18,7 @@ function PerTodo(props) {
       <div>
         <h1>{title}</h1>
         <p className={style.todoPara}>{desc}</p>
+        <p className={style.todoPara}>{number}</p>
       </div>
 
       <div>
@@ -27,17 +28,6 @@ function PerTodo(props) {
       </div>
     </article>
   );
-}
-
-PerTodo.propTypes = {
-  todo: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    todoContent: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      desc: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
-  removeTodo: PropTypes.func.isRequired,
 };
 
 export default PerTodo;
