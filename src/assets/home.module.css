@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #444;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
